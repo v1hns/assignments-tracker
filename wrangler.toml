@@ -1,0 +1,19 @@
+name = "assignments-tracker"
+main = "src/index.ts"
+compatibility_date = "2025-04-01"
+
+# Daily alert at 8am America/Los_Angeles (15:00 UTC during PDT, 16:00 UTC during PST).
+# We run at 15:00 UTC; alerts.ts filters by TIMEZONE so PST days still align.
+[triggers]
+crons = ["0 15 * * *"]
+
+[vars]
+TIMEZONE = "America/Los_Angeles"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "assignments"
+database_id = "REPLACE_AFTER_db:create"
+
+[observability]
+enabled = true
